@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     kotlin("android")
-    id("kotlin-android")
 }
 
 val compose_version = "1.0.5"
@@ -71,7 +70,7 @@ dependencies {
     // Coroutines Library
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     // Navigation Library
-    implementation("androidx.navigation:navigation-compose:2.4.0-rc01")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha07")
     // Testing Libraries
     androidTestImplementation ("androidx.test.ext:junit:1.1.3")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")

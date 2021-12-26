@@ -1,5 +1,6 @@
 package com.shady.openlibrary.android.main
 
+import android.os.Bundle
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.shady.openlibrary.android.navigation.Routes
 import com.shady.openlibrary.entities.LibraryDocument
 
@@ -114,9 +116,12 @@ private fun ShowDocs(docs: List<LibraryDocument>, navController: NavHostControll
                 Card(modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp, 4.dp)
-                    .clickable( onClick = {
-                        navController.currentBackStackEntry?.arguments?.putParcelable("document", i)
-                        navController.navigate(Routes.Details.route) })
+                    .clickable(onClick = {
+                        navController.currentBackStackEntry?.arguments= Bundle().apply {
+                            putParcelable("doc", i)
+                        }
+                        navController.navigate("${Routes.Details.route}") //?title=${i.title_suggest},author=${i.author_name?.toTypedArray()},ISDNs=${i.isbn?.toTypedArray()}
+                    })
                 ) {
                     Column() {
                         Text(text = i.title_suggest, style = typography.h5)
